@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block additional_includes %}
+    <link rel="stylesheet" href="{% static 'css/play.css' %}"/>
+    <script src="{% static 'js/drop.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <form method="POST" action="" enctype="multipart/form-data" class="dropzone">
+        {% csrf_token %}
+        <div class="drop-zone">
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <header>Drop file to upload or click here</header>
+            <input id="sudokuInput" type="file" name="sudokuImage" hidden>
+        </div>
+        <button id="sub" class="btn btn-lg btn-block" type="submit">Submit</button>
+    </form>
+{% endblock %}

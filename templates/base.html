@@ -33,26 +33,34 @@
         <div class="collapse navbar-collapse order-last ml-3" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'play' %}"> PLAY</a>
+                    <a class="nav-link" href="{% url 'upload' %}"> PLAY</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'sudoku' %}"> RULES & TIPS</a>
                 </li>
             </ul>
         </div>
-
-        <div class="order-0 order-md-last">
+        {% if user.is_authenticated %}
+            <div class="order-0 order-md-last">
+            <span class="navbar-text mr-4">
+            Hello, {{ request.user }}
+                <a href="{% url 'logout' %}" class="ml-2"><i class="fas fa-sign-out-alt"></i></a>
+            </span>
+            </div>
+        {% else %}
+            <div class="order-0 order-md-last">
             <span class="navbar-text mr-4">
                 <a href="{% url 'login' %}">
                  <i class="fas fa-user fa-lg"></i>
                 </a>
             </span>
-        </div>
+            </div>
+        {% endif %}
 
     </nav>
 
 
-    <div class="content">
+    <div class="container mt-5">
         {% block content %}
         {% endblock %}
     </div>
