@@ -3,8 +3,131 @@
 {% load static %}
 
 {% block additional_includes %}
+    <link rel="stylesheet" href="{% static 'css/play.css' %}"/>
+    <script src="{% static 'js/grid.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-    <h1>sudoku grid here</h1>
+    <div class="row board">
+        <div class="game">
+            <input type="text" hidden id="sudokuGrid" value="{{ grid }}">
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex flex-column ml-5">
+
+                <button type="button" class="btn" value="1">1</button>
+                <button type="button" class="btn" value="2">2</button>
+                <button type="button" class="btn" value="3">3</button>
+                <button type="button" class="btn" value="4">4</button>
+                <button type="button" class="btn" value="5">5</button>
+                <button type="button" class="btn" value="6">6</button>
+                <button type="button" class="btn" value="7">7</button>
+                <button type="button" class="btn" value="8">8</button>
+                <button type="button" class="btn" value="9">9</button>
+                <button type="button" class="btn" value="9">X</button>
+
+        </div>
+    </div>
 {% endblock %}

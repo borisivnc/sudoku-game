@@ -17,11 +17,8 @@ def login_page(request):
     if request.method == 'POST':
         if request.POST.get('submit') == 'register':
             form = CreateUserForm(request.POST)
-            print(form.is_valid())
-            print(request.POST)
             if form.is_valid():
                 form.save()
-                user = form.cleaned_data.get('username')
                 return redirect('login')
             messages.info(request, 'Failed to register')
 
@@ -54,11 +51,12 @@ def upload_file(request):
         sudoku_grid = request.FILES.get("sudokuImage")
         form = UploadFileForm(sudoku_grid)
         if form.is_valid():
-            print("file:", sudoku_grid.read())
-            render_sudoku(sudoku_grid)
+            grid = render_sudoku(sudoku_grid)
+            request.session['grid'] = grid
             return HttpResponseRedirect('play-sudoku')
-    return render(request, "upload_file.html", {})
+    return render(request, "upload_file.html",  {})
 
 
 def play(request):
-    return render(request, "play_sudoku.html", {})
+    grid = request.session['grid']
+    return render(request, "play_sudoku.html", {'grid': grid})

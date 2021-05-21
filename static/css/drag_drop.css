@@ -1,0 +1,50 @@
+.drop-zone {
+    max-width: 800px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
+    color: #cccccc;
+    border: 5px dashed #d4e9fd;
+    border-radius: 10px;
+    flex-direction: column;
+    margin: 12px auto;
+}
+
+.drop-zone.active{
+    border: 5px solid #d4e9fd;
+}
+
+.drop-zone .icon{
+    font-size: 50px;
+}
+
+.drop-zone header{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.drop-zone img{
+    padding: 5px;
+    width: 200px;
+    max-height: 220px;
+    border-radius: 8px;
+}
+
+#sub{
+    background-color: #d4e9fd;
+    color: black;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    justify-content: center;
+    margin: 6px auto;
+    display: flex;
+    max-width: 800px;
+    visibility: hidden;
+}
