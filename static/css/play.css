@@ -32,20 +32,6 @@ td{
 
 }
 
-input{
-    width: 100%;
-    border: none;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    box-sizing: border-box;
-}
-
-input:focus{
-    outline:none;
-}
-
-
 td:nth-child(3n) {
   border-right: 3px solid #d4e9fd;
 }
@@ -58,20 +44,26 @@ tr:nth-child(3n){
     background: rgba(215,150,0,0.15);
 }
 
-.btn {
-    width: 50px;
-    height: 50px;
+.key {
+    width: 60px;
+    height: 54px;
     border: 3px solid #d4e9fd;
     border-radius: 0;
+
 }
 
-.btn:hover {
+.key:hover {
     background-color: #d4e9fd;
-
 }
 
-.d-flex{
-    justify-content: center;
+.sudoku-keys{
+    order: 2;
+    width: 55px;
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    margin-left: 8px;
+    margin-top: 0;
 }
 
 .board{
@@ -79,10 +71,34 @@ tr:nth-child(3n){
 }
 
 @media screen and (max-width: 800px) {
-  .d-flex {
-      display: block;
-      flex-direction: row;
-      float: none;
-      margin-top: 5px;
+  .sudoku-keys {
+    width: 100%;
+    margin-top: 10px;
+    display: block;
   }
 }
+
+.sudoku-box{
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.timer{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.play{
+    background-color: #cde3f7;
+}
+
+#minutes {
+    font-size: 20px;
+    margin-left: 2px;
+}
+#seconds {
+     font-size: 20px;
+ }

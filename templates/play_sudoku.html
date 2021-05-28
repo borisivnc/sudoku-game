@@ -8,126 +8,134 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row board">
-        <div class="game">
-            <input type="text" hidden id="sudokuGrid" value="{{ grid }}">
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="d-flex flex-column ml-5">
+    <div class="board">
+            <div class="timer">
+                <button type="button" class="btn play btn-sm" id="startCounter"><i class="fas fa-play"></i></button>
+                <span id="minutes"> 00</span>:<span id="seconds">00</span>
+                <button type="button" id="Solution" class="ml-5 btn btn-success">Submit solution</button>
+            </div>
+            <div class="sudoku-box">
+                <input type="text" hidden id="sudokuGrid" value="{{ grid }}">
+                <div class="game">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <button type="button" class="btn" value="1">1</button>
-                <button type="button" class="btn" value="2">2</button>
-                <button type="button" class="btn" value="3">3</button>
-                <button type="button" class="btn" value="4">4</button>
-                <button type="button" class="btn" value="5">5</button>
-                <button type="button" class="btn" value="6">6</button>
-                <button type="button" class="btn" value="7">7</button>
-                <button type="button" class="btn" value="8">8</button>
-                <button type="button" class="btn" value="9">9</button>
-                <button type="button" class="btn" value="9">X</button>
+                <div class="sudoku-keys">
+                    <button id="key" type="button" class="btn key" value="1">1</button>
+                    <button id="key" type="button" class="btn key" value="2">2</button>
+                    <button id="key" type="button" class="btn key" value="3">3</button>
+                    <button id="key" type="button" class="btn key" value="4">4</button>
+                    <button id="key" type="button" class="btn key" value="5">5</button>
+                    <button id="key" type="button" class="btn key" value="6">6</button>
+                    <button id="key" type="button" class="btn key" value="7">7</button>
+                    <button id="key" type="button" class="btn key" value="8">8</button>
+                    <button id="key" type="button" class="btn key" value="9">9</button>
+                    <button id="key" type="button" class="btn key" value="9">X</button>
+                </div>
+            </div>
 
-        </div>
+
     </div>
 {% endblock %}
