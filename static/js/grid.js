@@ -3,6 +3,8 @@ $(function () {
     const sudoku_grid = document.getElementById("sudokuGrid").value;
     let board = document.getElementsByClassName("sudoku-box");
     const items = eval(sudoku_grid);
+
+    console.log(items)
     let filledTable = Array.from(Array(9), () => new Array(9));
     fillTable();
 
@@ -85,7 +87,9 @@ $(function () {
     });
 
     let sec = 0;
-    let active = false;
+    let active = true;
+
+    start_timer()
 
     function start_timer(){
         if (active){
@@ -99,23 +103,40 @@ $(function () {
         }
     }
 
+
     $("#startCounter").click(function () {
         if($(this).children("i").hasClass('fa-play')){
             $(this).children("i").removeClass('fa-play');
             $(this).children("i").addClass('fa-pause');
             active = true
+            board[0].classList.remove("paused-game")
+            $(".sudoku-box").children("i").hide()
             start_timer()
 
         }
         else if($(this).children("i").hasClass('fa-pause')){
             $(this).children("i").removeClass('fa-pause');
             $(this).children("i").addClass('fa-play');
+            board[0].classList.add("paused-game")
+            $(".sudoku-box").children("i").removeAttr("hidden")
+            $(".sudoku-box").children("i").show()
             active = false
             start_timer()
         }
 
     });
 
+    board[0].addEventListener("click",() => {
+        if($("#startCounter").children("i").hasClass('fa-play')){
+            $("#startCounter").children("i").removeClass('fa-play');
+            $("#startCounter").children("i").addClass('fa-pause');
+            $(".sudoku-box").children("i").hide()
+            active = true
+            board[0].classList.remove("paused-game")
+            start_timer()
+
+        }
+    })
 
     function sendSolution(){
         for(let i = 0; i < table["0"].rows.length ; i++)

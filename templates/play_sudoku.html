@@ -10,12 +10,13 @@
 {% block content %}
     <div class="board">
             <div class="timer">
-                <button type="button" class="btn play btn-sm" id="startCounter"><i class="fas fa-play"></i></button>
+                <button type="button" class="btn play btn-sm" id="startCounter"><i class="fas fa-pause"></i></button>
                 <span id="minutes"> 00</span>:<span id="seconds">00</span>
                 <button type="button" id="Solution" class="ml-5 btn btn-success">Submit solution</button>
             </div>
             <div class="sudoku-box">
                 <input type="text" hidden id="sudokuGrid" value="{{ grid }}">
+                <i hidden class="iconPaused fas fa-play"></i>
                 <div class="game">
                     <table class="table table-bordered">
                         <tbody>

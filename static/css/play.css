@@ -102,3 +102,23 @@ tr:nth-child(3n){
 #seconds {
      font-size: 20px;
  }
+
+.paused-game{
+    filter: blur(3px);
+    z-index: 1;
+}
+
+.iconPaused{
+    position: absolute;
+    align-items: center;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 50px;
+    bottom: 0;
+    z-index: auto;
+    flex: 0 1 auto;
+    -webkit-box-align: center;
+    font-size: 72px ;
+    justify-content: center;
+}
