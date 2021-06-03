@@ -5,7 +5,8 @@ from utils.sudoku_grid import render_sudoku
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-
+import numpy as np
+import cv2
 
 def home(request):
     return render(request, "home.html", {})
@@ -51,7 +52,7 @@ def upload_file(request):
         sudoku_grid = request.FILES.get("sudokuImage")
         form = UploadFileForm(sudoku_grid)
         if form.is_valid():
-            grid = render_sudoku(sudoku_grid)
+            grid = render_sudoku(cv2.imdecode(np.fromstring(sudoku_grid.read(), np.uint8), cv2.IMREAD_UNCHANGED))
             request.session['grid'] = grid
             return HttpResponseRedirect('play-sudoku')
     return render(request, "upload_file.html",  {})
