@@ -25,10 +25,17 @@ dropArea.addEventListener("dragleave", ()=>{
 });
 
 dropArea.addEventListener("drop", (e)=>{
-    e.preventDefault();
-    file = e.dataTransfer.files[0];
-    console.log(file)
-    displayFile()
+    e.stopPropagation();
+    e.preventDefault()
+    let file = e.dataTransfer.files[0]
+    input.files = e.dataTransfer.files;
+    console.log(input.files)
+    const fileReader = new FileReader();
+    $(icon).removeClass('fa-cloud-upload-alt')
+    $(icon).addClass('fa-check-circle').css("color","green")
+    dragText.textContent = "File uploaded";
+    fileReader.readAsDataURL(file);
+    subButton.style.visibility = "visible"
 });
 
 dropArea.addEventListener("click",() => {

@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 import numpy as np
 import cv2
 
+
 def home(request):
     return render(request, "home.html", {})
 
@@ -54,10 +55,24 @@ def upload_file(request):
         if form.is_valid():
             grid = render_sudoku(cv2.imdecode(np.fromstring(sudoku_grid.read(), np.uint8), cv2.IMREAD_UNCHANGED))
             request.session['grid'] = grid
-            return HttpResponseRedirect('play-sudoku')
+            return HttpResponseRedirect('correct-sudoku-grid')
     return render(request, "upload_file.html",  {})
+
+
+def correct_sudoku(request):
+    grid = request.session['grid']
+    if request.method == 'POST':
+        new_grid = request.POST.get("new_grid")
+        final_grid = np.fromstring(new_grid, sep=',', dtype='int').reshape([9, 9]).tolist()
+        request.session['grid'] = final_grid
+        return HttpResponseRedirect('play-sudoku')
+    return render(request, "correct_grid.html", {'grid': grid})
 
 
 def play(request):
     grid = request.session['grid']
     return render(request, "play_sudoku.html", {'grid': grid})
+
+
+def result(request):
+    return render(request, "result.html", {})

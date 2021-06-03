@@ -122,3 +122,11 @@ tr:nth-child(3n){
     font-size: 72px ;
     justify-content: center;
 }
+
+.good_grid{
+    margin-top: 5px;
+}
+
+.notice{
+    text-align: center;
+}

@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block additional_includes %}
+    <link rel="stylesheet" href="{% static 'css/play.css' %}"/>
+    <script src="{% static 'js/grid_correction.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 offset-md-3  notice alert alert-warning" role="alert">
+            Please, correct the grid if needed and submit the changes
+        </div>
+        <div class="col good_grid">
+            <form method="post">
+            {% csrf_token %}
+            <input type="text" hidden id="sudokuGrid" name="new_grid" value="{{ grid }}">
+            <button type="submit" id="Solution" class="ml-5 btn btn-success">Submit changes</button>
+            </form>
+        </div>
+    </div>
+    <div class="board">
+            <div class="sudoku-box">
+                <div class="game">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                 <div class="sudoku-keys">
+                    <button id="key" type="button" class="btn key" value="1">1</button>
+                    <button id="key" type="button" class="btn key" value="2">2</button>
+                    <button id="key" type="button" class="btn key" value="3">3</button>
+                    <button id="key" type="button" class="btn key" value="4">4</button>
+                    <button id="key" type="button" class="btn key" value="5">5</button>
+                    <button id="key" type="button" class="btn key" value="6">6</button>
+                    <button id="key" type="button" class="btn key" value="7">7</button>
+                    <button id="key" type="button" class="btn key" value="8">8</button>
+                    <button id="key" type="button" class="btn key" value="9">9</button>
+                    <button id="key" type="button" class="btn key" value="9">X</button>
+                </div>
+
+            </div>
+
+    </div>
+{% endblock %}
