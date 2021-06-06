@@ -62,7 +62,7 @@ $(function () {
         {
             for(let j = 0; j < table["0"].rows[i].cells.length; j++)
             {
-                filledTable[i][j] = table["0"].rows[i].cells[j].innerHTML === "" ? -1 : table["0"].rows[i].cells[j].innerHTML;
+                filledTable[i][j] = table["0"].rows[i].cells[j].innerHTML === "" ? 0 : table["0"].rows[i].cells[j].innerHTML;
 
             }
         }

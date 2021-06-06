@@ -8,14 +8,22 @@
 {% endblock %}
 
 {% block content %}
+    <div class="row justify-content-center">
+        <div class="col-3 offset-md-3">
+            <button type="button" class="btn play btn-sm" id="startCounter"><i class="fas fa-pause"></i></button>
+            <span id="minutes"> 00</span>:<span id="seconds">00</span>
+        </div>
+        <div class="col-6 mb-4">
+            <form method="post">
+            {% csrf_token %}
+            <input type="text" hidden id="currentTimeInput" name="final_time">
+            <input type="text" hidden id="sudokuGrid" name="final_grid" value="{{ grid }}">
+            <button type="submit" id="Solution" class="ml-5 btn btn-success">Submit solution</button>
+            </form>
+        </div>
+    </div>
     <div class="board">
-            <div class="timer">
-                <button type="button" class="btn play btn-sm" id="startCounter"><i class="fas fa-pause"></i></button>
-                <span id="minutes"> 00</span>:<span id="seconds">00</span>
-                <button type="button" id="Solution" class="ml-5 btn btn-success">Submit solution</button>
-            </div>
             <div class="sudoku-box">
-                <input type="text" hidden id="sudokuGrid" value="{{ grid }}">
                 <i hidden class="iconPaused fas fa-play"></i>
                 <div class="game">
                     <table class="table table-bordered">

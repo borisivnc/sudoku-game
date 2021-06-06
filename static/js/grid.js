@@ -13,7 +13,7 @@ $(function () {
         {
             for(let j = 0; j < table["0"].rows[i].cells.length; j++)
             {
-                if(items[i][j] === -1){
+                if(items[i][j] === 0){
                     table["0"].rows[i].cells[j].innerHTML = ""
                 }
                 else{
@@ -144,7 +144,7 @@ $(function () {
             for(let j = 0; j < table["0"].rows[i].cells.length; j++)
             {
                 if (table["0"].rows[i].cells[j].innerHTML === ""){
-                    filledTable[i][j] = -1
+                    filledTable[i][j] = 0
                 }
                 else{
                     filledTable[i][j] = table["0"].rows[i].cells[j].innerHTML
@@ -155,12 +155,16 @@ $(function () {
         let minute = document.getElementById("minutes").innerText
         let second = document.getElementById("seconds").innerText
         let current_time = minute + ":"+ second
-        alert("timer: "+ current_time + "\n sudoku grid: "+ filledTable);
+        $("#sudokuGrid").val(filledTable.toString())
+        $("#currentTimeInput").val(current_time)
     }
 
     $("#Solution").click(function () {
+        active = false
+        start_timer()
         sendSolution()
     });
+
 
 });
 

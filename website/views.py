@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from .forms import UploadFileForm
 from utils.sudoku_grid import render_sudoku
+from solver.solver import solve
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -71,8 +72,33 @@ def correct_sudoku(request):
 
 def play(request):
     grid = request.session['grid']
+    if request.method == 'POST':
+        final_grid = request.POST.get("final_grid")
+        final_time = request.POST.get("final_time")
+        grid_result = np.fromstring(final_grid, sep=',', dtype='int').reshape([9, 9]).tolist()
+        final_result = solve(np.array(grid))
+        print(final_result.tolist())
+        print(grid_result)
+        if final_result.tolist() == grid_result:
+            print("Success!")
+            request.session['result'] = "success"
+        else:
+            print("Fail!")
+            request.session['result'] = "fail"
+
+        print(final_time)
+        request.session['final_grid'] = grid_result
+        request.session['solve_grid'] = final_result.tolist()
+        request.session['final_time'] = final_time
+        return HttpResponseRedirect('result')
     return render(request, "play_sudoku.html", {'grid': grid})
 
 
 def result(request):
-    return render(request, "result.html", {})
+    if 'final_time' not in request.session:
+        return redirect('upload')
+    timer = request.session['final_time']
+    result = request.session['result']
+    solve_grid = request.session['solve_grid']
+    tps = timer.split(':')[0]
+    return render(request, "result.html", {'timer': timer, 'result': result, 'solve_grid': solve_grid, 'tps': tps})
