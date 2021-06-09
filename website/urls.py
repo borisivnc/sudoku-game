@@ -3,7 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name="home"),
-    path('sudoku-rules', views.sudoku, name="sudoku"),
     path('correct-sudoku-grid', views.correct_sudoku, name="correct"),
     path('play-sudoku', views.play, name="play"),
     path('result', views.result, name="result"),

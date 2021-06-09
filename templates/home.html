@@ -1,8 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container mt-5 text-center">
-            <h1>HOMEPAGE with instructions</h1>
+    <div class="container mt-5">
+    <div class="text-center">
+        <h1>Welcome !</h1>
+        <br />
+        <h6>Do you have sudokus at home ? Do you want to compete with other sudoku entouthiasts
+            like yourself ? You came to the right place !</h6>
+        <br />
+        <a href="{% url 'upload' %}" class="btn btn-success" role="button">Start playing!</a>
+    </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>What is Sudoku ?</h3>
+        <p>Sudoku is a logic-based, combinatorial number-placement puzzle. In classic sudoku, the objective is to
+            fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that compose
+            the grid contains all of the digits from 1 to 9. The puzzle setter provides a partially completed grid,
+            which for a well-posed puzzle has a single solution.</p>
+        <br/>
+        <br />
+        <br />
+        <h3>How to play ?</h3>
+        <p>After you click on the <span class="btn btn-success disabled" style="cursor:default;">Start playing!</span> button,
+        you will be able to upload a picture of the sudoku you want to solve. After uploading it, you will be asked if there was
+        any error in the process of recognizing the numbers of the grid, in which case you can correct them. Then you can start playing !
+        A timer will be started and you can start solving the sudoku, and when you think you are done, you can submit your result and
+        get your score. Have fun !
+        </p>
+        <br />
+        <br />
+
+
     </div>
 
 {% endblock %}

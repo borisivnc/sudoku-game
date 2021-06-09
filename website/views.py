@@ -45,10 +45,6 @@ def logout_user(request):
     return redirect('login')
 
 
-def sudoku(request):
-    return render(request, "sudoku_rules.html", {})
-
-
 def upload_file(request):
     if request.method == 'POST':
         sudoku_grid = request.FILES.get("sudokuImage")
