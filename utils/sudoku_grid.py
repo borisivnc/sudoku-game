@@ -149,7 +149,7 @@ def predict_digit(img, easy_ocr_reader):
     if perc >= 50:
         return 9
 
-    return -1
+    return 0
 
 
 class SudokuGrid:
@@ -289,7 +289,7 @@ class SudokuGrid:
                     pred = predict_digit(enlarged, self.reader)
                     self.result_grid[i][j] = pred
                 else:
-                    self.result_grid[i][j] = -1
+                    self.result_grid[i][j] = 0
         return self.result_grid
 
 

@@ -13,7 +13,7 @@ $(function () {
         {
             for(let j = 0; j < table["0"].rows[i].cells.length; j++)
             {
-                if(items[i][j] === -1){
+                if(items[i][j] === 0){
                     table["0"].rows[i].cells[j].innerHTML = ""
                 }
                 else{
