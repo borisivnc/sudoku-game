@@ -1,6 +1,7 @@
 from copy import deepcopy
 import numpy as np
 
+
 def solve(grid):
     candidates = filter(grid)
     grid = fill_singles(grid, candidates)
@@ -9,6 +10,7 @@ def solve(grid):
     if not is_valid_grid(grid):
         return None
     return guess(grid, candidates)
+
 
 def filter(grid):
     test_grid = grid.copy()
@@ -23,6 +25,7 @@ def filter(grid):
                         filtered_candidates[i][j].remove(candidate)
                     test_grid[i][j] = 0
     return filtered_candidates
+
 
 def guess(grid, candidates=None):
     grid = grid.copy()
@@ -39,6 +42,7 @@ def guess(grid, candidates=None):
                     if solution is not None:
                         return solution
                     grid[i][j] = 0
+
 
 def get_candidates(grid : np.ndarray) -> list:
     def subgrid_index(i : int, j : int) -> int:
@@ -60,6 +64,7 @@ def get_candidates(grid : np.ndarray) -> list:
         grid_candidates.append(row_candidates)
     return grid_candidates
 
+
 def get_subgrids(grid):
     subgrids = []
     for box_i in range(3):
@@ -70,6 +75,7 @@ def get_subgrids(grid):
                     subgrid.append(grid[3*box_i + i][3*box_j + j])
             subgrids.append(subgrid)
     return np.array(subgrids)
+
 
 def fill_singles(grid, candidates=None):
     grid = grid.copy()
@@ -86,6 +92,7 @@ def fill_singles(grid, candidates=None):
                     any_fill = True
     return grid
 
+
 def merge(candidates_1, candidates_2):
     candidates_min = []
     for i in range(9):
@@ -98,11 +105,13 @@ def merge(candidates_1, candidates_2):
         candidates_min.append(row)
     return candidates_min
 
+
 def create_grid(puzzle_str):
     lines = puzzle_str.replace(' ','').replace('\n','')
     digits = list(map(int, lines))
     grid = np.array(digits).reshape(9,9)
     return grid
+
 
 def is_valid_grid(grid):
     candidates = get_candidates(grid)
@@ -112,18 +121,10 @@ def is_valid_grid(grid):
                 return False
     return True
 
+
 def is_solution(grid):
     if np.all(np.sum(grid, axis=1) == 45) and \
        np.all(np.sum(grid, axis=0) == 45) and \
        np.all(np.sum(get_subgrids(grid), axis=1) == 45):
         return True
     return False
-
-if __name__ == '__main__':
-    puzzle = [ '043080250600000000000001094900004070000608000010200003820500000000000005034090710',
-        '100920000524010000000000070050008102000000000402700090060000000000030945000071006',
-        '800010009050807010004090700060701020508060107010502090007040600080309040300050008',
-        '000604700706000009000005080070020093800000005430010070050200000300000208002301000',
-        '530070000600195000098000060800060003400803001700020006060000280000419005000080079']
-    for p in puzzle:
-        print(solve(create_grid(p)))

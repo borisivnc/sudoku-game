@@ -10,17 +10,124 @@
 {% block content %}
     <div class="text-center">
         {% if result == "success" %}
-            <h2><span class="badge badge-success">SUCCESS</span></h2>
-            <p>Congratulation {% if user.is_authenticated %} {{ request.user }}{% endif %}, you finish the sudoku in <strong>{{ timer }} {% if tps == "00" %} seconds {% else %} min {% endif %} </strong></p>
+            <h2 class="mb-4"><span class="badge badge-success">SUCCESS</span></h2>
+            <h4>Congratulation {% if user.is_authenticated %} {{ request.user }}{% endif %}, you finish the sudoku in <strong>{{ timer }} {% if tps == "00" %} seconds {% else %} min {% endif %} </strong></h4>
 
         {% else %}
             <h2><span class="badge badge-danger">FAIL</span></h2>
-            <p>Sorry {% if user.is_authenticated %} {{ request.user }}{% endif %}, you failed! You took <strong>{{ timer }} {% if tps == "00" %} seconds {% else %}  min {% endif %} </strong>. The solution is:</p>
+            <p>Sorry {% if user.is_authenticated %} {{ request.user }}{% endif %}, you failed! You took <strong>{{ timer }} {% if tps == "00" %} seconds {% else %}  min {% endif %} </strong>. You can find the solution and your grid below</p>
 
             <input type="text" hidden id="sudokuGrid" name="solve_grid" value="{{ solve_grid }}">
+            <input type="text" hidden id="userGrid" name="user_grid" value="{{ user_grid }}">
+
             <div class="sudoku-box">
+                <div class="game">
+                    <table class="table table-bordered solveTable">
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             <div class="game">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered ml-5 userTable">
                         <tbody>
                         <tr>
                             <td></td>
@@ -125,7 +232,6 @@
                     </table>
                 </div>
             </div>
-
         {% endif %}
     </div>
 
